@@ -1,0 +1,19 @@
+- name: "Data_types"
+  hosts: web
+  vars: 
+    Role: "DevOps Engineer" # String
+    Experience: 3.7 # Integer
+    Topics: # Lists [] defined in square braces
+    - ShellScript
+    - Linux Commands
+    - EC2
+    - AWS
+    Tools: # Map/dictionary {} defined in flower braces
+      Script: Ansible
+      Infra: Terraform
+      Monitor: Graphana,Promethues
+      Cloud: AWS
+  tasks:
+  - name: "Info_from_Data_Types"
+    ansible.builtin.debug:
+      msg: "I am working as a {{ Role }} with an experience of {{ Experience }} in {{ Tools }} and {{ Topics }}"

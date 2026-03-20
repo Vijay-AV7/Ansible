@@ -1,0 +1,15 @@
+- name: "Install_Package"
+  hosts: web
+  become: yes # this allow sudo acces to the server node
+  tasks:
+  - name: "Install_mysql-server"
+    ansible.builtin.package:
+      name: mysql-server
+      state: present
+  - name: "Start_and_Enable_Service"
+    ansible.builtin.service:
+      name: "mysqld"
+      state: started
+      enabled: yes
+
+  

@@ -1,0 +1,20 @@
+- name: "Starting and Enabling the Installed packages"
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: "Installing the packages"
+    ansible.builtin.package:
+      name: "{{ item }}"
+      state: "present"
+    loop: # here in the loop inputs are list of strings
+    - nginx
+    - "mysql-server"
+  - name: "Enabling and starting the services"
+    ansible.builtin.service:
+      name: "{{ item.name }}"
+      enabled: "{{ item.enabled }}"
+      state: "{{ item.state }}"
+    loop: # here in the loop inputs are dictionary
+    - {name: "nginx", enabled: "true", state: "started"}
+    - {name: "mysqld", enabled: "true", state: "started"}

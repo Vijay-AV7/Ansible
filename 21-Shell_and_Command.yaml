@@ -1,0 +1,26 @@
+- name: "Shell and Command"
+  hosts: local
+  connection: local
+  tasks:
+  - name: "Execute ls -la Command using shell module"
+    ansible.builtin.shell: ls -la > /tmp/shell_module.txt
+    register: shell_module
+  
+  - name: "print the output of shell module"
+    ansible.builtin.debug:
+      msg: "{{ shell_module }}"
+  
+  - name: "Executing ls -la command using command module"
+    ansible.builtin.command: ls -la
+    register: Command_module
+    
+  - name: "print the output of command module"
+    ansible.builtin.debug:
+      msg: "{{ Command_module }}"
+  - name: connect to mysql server
+    community.mysql.mysql_info:
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      login_host: mysql.daws82s.online
+    register: mysql_info
+    ignore_errors: true

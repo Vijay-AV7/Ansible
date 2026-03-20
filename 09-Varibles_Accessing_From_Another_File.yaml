@@ -1,0 +1,10 @@
+- name: "Variable_Accessing_From_Another_File"
+  hosts: web
+  vars_files:
+  - Var_declare_file.yaml #Since we declared this file as vars_files so no need to declare as vars in "Var_declare_file.yaml". you can simply start create variables.
+  tasks:
+  - name: "Task_Started"
+    ansible.builtin.debug:
+      msg: "hello this is {{ COURSE }}, today I am learing {{ TOPIC }} and today means {{ DEADLINE }} is last day to complete {{ TOPIC }}"
+
+  

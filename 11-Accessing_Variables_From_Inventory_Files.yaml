@@ -1,0 +1,6 @@
+- name: "Accessing Variables from inventory file"
+  hosts: web #Here variables are accessing from inventory and the Host is web so all variables are declared at web ip
+  tasks:
+  - name: "Variables from inventory files"
+    ansible.builtin.debug:
+      msg: "Hello, this is {{ COURSE }}, I am learing {{ TOPIC }} and today means {{ LASTDAY }} is teh last day to complete {{ TOPIC }}"

@@ -1,0 +1,10 @@
+- name: "Variables_Using"
+  hosts: web
+  vars:
+    COURSE: "DevOps"
+    TOPIC: "Ansible"
+    DEADLINE: "Sunday"
+  tasks:
+  - name: "Creating_a_sentance_and_piping_the_values_using_variables"
+    ansible.builtin.debug:
+      msg: "Hi, this is {{ COURSE }}, I am learing {{ TOPIC }}, today is {{ DEADLINE }} as this is the last day to complete the {{ TOPIC }}"

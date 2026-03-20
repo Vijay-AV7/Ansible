@@ -1,0 +1,53 @@
+- name: "Different types of Filters"
+  hosts: local
+  connection: local
+  tasks:
+  - name: "Task 1 - Converting string to lists"
+    vars: 
+    - Topics: "Aws with devops, Shell scripting, Ansible, Terraform"
+    ansible.builtin.debug:
+      msg: "Here are the {{ Topics | split(',') }}"
+  - name: "Deault value punching in undefined variable"
+    ansible.builtin.debug:
+      msg: "Hello, I am {{ NAME | default('Vijay') }}"
+  - name: "Convert lists to dictionary"
+    vars:
+      Infome: # Below is the correct list format
+        - {'key': 'name', 'value': 'ansible'}
+        - {'key': 'exp', 'value': '3.7'}
+    ansible.builtin.debug:
+      msg: "here is the result : {{ Infome | items2dict }}"
+  - name: "Converting dictionaries to lists"
+    vars:
+      infodict:
+        name: "Vijay"
+        exp: "3.7"
+        tools: "Ansible, Terraform, Kubernetes, Docker"
+        name1: "Mahi"
+        exp1: "17" 
+        tools1: "Cricket, Aura farm"
+    ansible.builtin.debug:
+      msg: "here is the info {{ infodict | dict2items }}"
+  - name: "Convert to all lower cases"
+    vars:
+      LowerPerson: VIJAY 
+    ansible.builtin.debug:
+      msg: "Your Name Is {{ LowerPerson | lower }}"
+  - name: "Convert to all upper cases"
+    vars:
+      UpperPerson: vijay 
+    ansible.builtin.debug:
+      msg: "Your Name Is {{ UpperPerson | upper }}"
+
+  - name: "Find min and max number from string"
+    vars:
+      Number_List: [1, 2, 32, 432, 7432, 0] #List of integers
+    ansible.builtin.debug:
+      msg: "The min number is {{ Number_List | min }} and the max number is {{ Number_List | max }}"
+  - name: check ipaddress is valid or not
+    vars:
+      ip: "54.84.229.213" #Valid
+      ip1: "54.84.229.256"
+    ansible.builtin.debug:
+      msg: "{{ ip1 | ansible.utils.ipaddr }}"
+  

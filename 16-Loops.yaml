@@ -1,0 +1,12 @@
+- name: "Priniting a list of words in a sentance"
+  hosts: local
+  connection: local
+  tasks:
+  - name: "Task started"
+    ansible.builtin.debug:
+      msg: "Hello, {{ item }}!"
+    loop:
+      - Devops
+      - Ansible
+      - Terraform
+      - "Good morning everyone"

@@ -1,0 +1,13 @@
+- name: "Variable_Using_At_Task_Level"
+  hosts: web
+  vars:
+    COURSE: AWS
+    TOPIC: Ansible
+    DEADLINE: Sunday
+  tasks:
+  - name: "Variable_At_Task_Level"
+    vars: 
+      COURSE: DevOps 
+      TOPIC: Terraform
+    ansible.builtin.debug:
+      msg: "hello, this is {{ COURSE }}, today I am learining {{ TOPIC }}, today is the last day (i.e., {{ DEADLINE }}) to complete {{ TOPIC }}"

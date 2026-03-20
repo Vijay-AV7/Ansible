@@ -1,0 +1,17 @@
+- name: "Creating_Login_Prompt"
+  hosts: web
+  vars_prompt:
+  - name: "COURSE_Prompt"
+    prompt: "what is you course name"
+    private: false #It is not confidential so showing this on screen
+  - name: "Topic"
+    prompt: "What topic are you studying"
+    private: false
+  - name: "Deadline"
+    prompt: "What is the last day to complete the topic"
+    private: true # Assuming this is confidential task hiding from showing on screen
+  tasks:
+  - name: "Printing the prompt results"
+    ansible.builtin.debug:
+      msg: "hello, this is {{ COURSE_Prompt }}, today I am learning {{ Topic }}, {{ Deadline }} is the last day to complete the {{ Topic }}"
+

@@ -1,0 +1,10 @@
+- name: conversation
+  hosts: web
+  tasks: 
+  - name: conversation between robert and rahim
+    ansible.builtin.debug:
+      msg:
+      - "Rahim:: hello robert"
+      - "Robert:: Hello rahim"
+      - "Rahim:: how are you?"
+      - "Robert:: I am fine rahim"

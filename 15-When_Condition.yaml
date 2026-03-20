@@ -1,0 +1,25 @@
+- name: "Simple_When_Condition"
+  hosts: local
+  connection: local
+  vars:
+    NUMBER: 27
+  tasks:
+  - name: "Checking the number size"
+    ansible.builtin.debug:
+      msg: "The given {{ NUMBER }} is greater than 21"
+    when: NUMBER > 21
+ 
+  - name: "Checking the number size"
+    ansible.builtin.debug:
+      msg: "The given {{ NUMBER }} is lesser than 30"
+    when: NUMBER < 21
+
+  - name: "Checking the number size"
+    ansible.builtin.debug:
+      msg: "The given {{ NUMBER }} is not equal t0 17"
+    when: NUMBER != 17
+
+  - name: "Checking the number size"
+    ansible.builtin.debug:
+      msg: "The given {{ NUMBER }} is equal t0 27"
+    when: NUMBER == 27

@@ -1,0 +1,13 @@
+- name: "Install_Packages"
+  hosts: web
+  become: yes # this allow sudo acces to the server node
+  tasks:
+  - name: "Installing_nginx_Start"
+    ansible.builtin.package:
+      name: "nginx"
+      state: present
+  - name: "Starting_nginx"
+    ansible.builtin.service:
+      name: "nginx"
+      state: started
+      enabled: yes

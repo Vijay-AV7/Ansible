@@ -1,0 +1,13 @@
+- name: "Installing_Packages"
+  hosts: local
+  connection: local
+  become: yes
+  tasks:
+  - name: "Removing packages using map/dictionary in loop"
+    ansible.builtin.package:
+      name: "{{ item.name }}"
+      state: "{{ item.state }}"
+    loop:
+      - {name: "nginx", state: "present"}
+      - {name: "gcc", state: "absent"}
+      - {name: "mysql", state: "absent"}

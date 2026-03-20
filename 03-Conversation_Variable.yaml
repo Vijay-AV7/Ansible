@@ -1,0 +1,14 @@
+- name: Conversation with variable
+  hosts: web
+  vars:
+    person_1: "Rahim"
+    person_2: "Robert"
+  tasks: 
+  - name: "Conversation with variable"
+    ansible.builtin.debug:
+      msg:
+      - "{{ person_1 }}:: hello {{ person_2 }}"
+      - "{{ person_2 }}:: Hello {{ person_1 }}"
+      - "{{ person_1 }}:: how are you?"
+      - "{{ person_2 }}:: I am fine {{ person_1 }}"
+

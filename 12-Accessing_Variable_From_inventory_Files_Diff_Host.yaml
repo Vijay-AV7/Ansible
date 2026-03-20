@@ -1,0 +1,7 @@
+- name: "Accessing variables from inventory but from host"
+  hosts: local
+  connection: local
+  tasks:
+  - name: "Pulling variables from local host from inventory file"
+    ansible.builtin.debug:
+      msg: "hello, this is {{ NAME }}, I will complete this {{ TOPIC }} and move to another topic {{ NEXT_TOPIC }}"

@@ -1,0 +1,29 @@
+- name: "variable Preference from Play, task, vars declared in files, prompt, command line, inventory file"
+  hosts: web
+  # vars:
+  #   VARS_PREF: "Var at Play level"
+  # vars_files:
+  # - Var_declare_file.yaml
+  # vars_prompt:
+  # - name: "VARS_PREF"
+  #   prompt: "Enter preference value at prompt"
+  #   private: false
+  tasks:
+  - name: "Vars"
+  #   vars:
+  #     VARS_PREF: "Task Level Vars"
+    ansible.builtin.debug:
+      msg: "{{ VARS_PREF }}"
+
+#Result 
+# 1. Command Line
+# 2. Task level 
+# 3. Vars at file level
+# 4. Vars from prompt
+# 5. Vars at Play level
+# 6. Var at inventopry level
+# 7. Roles
+
+
+  
+  
