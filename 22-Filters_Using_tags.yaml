@@ -3,6 +3,8 @@
   connection: local
   tasks:
   - name: "Task 1 - Converting string to lists"
+    tags:
+    - required
     vars: 
     - Topics: "Aws with devops, Shell scripting, Ansible, Terraform"
     ansible.builtin.debug:
@@ -13,6 +15,8 @@
       msg: "Hello, I am {{ NAME | default('Vijay') }}"
 
   - name: "Convert lists to dictionary"
+    tags:
+    - required
     vars:
       Infome: # Below is the correct list format
         - {'key': 'name', 'value': 'ansible'}
@@ -21,6 +25,8 @@
       msg: "here is the result : {{ Infome | items2dict }}"
 
   - name: "Converting dictionaries to lists"
+    tags:
+    - required
     vars:
       infodict:
         name: "Vijay"
