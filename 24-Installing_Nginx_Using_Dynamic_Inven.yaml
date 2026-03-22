@@ -1,14 +1,14 @@
 - name: nginx installation
   hosts: all
   become: yes
-  # serial: 10
+  serial: 2
   tasks:
   - name: install nginx
     ansible.builtin.package:
       name: nginx
       state: present
-  # - name: run nginx
-  #   tags:
-  #   - run
-  #   ansible.builtin.service:
-  #     name: nginx
+  - name: run nginx
+    tags:
+    - run
+    ansible.builtin.service:
+      name: nginx
